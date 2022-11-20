@@ -14,7 +14,7 @@ public class characterMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-     //   cl = GetComponent<Collider2D>();
+     // cl = GetComponent<Collider2D>();
 
     }
 
