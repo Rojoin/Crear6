@@ -8,6 +8,8 @@ public class characterMovement : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField] private float rightSpeed;
     [SerializeField] private float jumpForce;
+
+    private int life = 10;
     private bool jump = false;
 
     private Rigidbody2D rb;
@@ -56,6 +58,10 @@ public class characterMovement : MonoBehaviour
         }
     }
 
+    public void Damage(int damage)
+    {
+        life -= damage;
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
