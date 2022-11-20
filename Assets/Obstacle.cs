@@ -25,7 +25,7 @@ public class Obstacle : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<characterMovement>().Damage(damageDone);
+           // other.GetComponent<characterMovement>().Damage(damageDone);
         }
     }
 
