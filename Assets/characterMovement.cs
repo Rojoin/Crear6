@@ -9,11 +9,13 @@ public class characterMovement : MonoBehaviour
     [SerializeField] private float rightSpeed;
     [SerializeField] private float jumpForce;
 
+    [SerializeField] private Collider2D runningCollider;
+    [SerializeField] private Collider2D slidingCollider;
+
     private int life = 10;
     private bool jump = false;
 
     private Rigidbody2D rb;
-    private Collider2D cl;
 
 
     // Start is called before the first frame update
@@ -27,7 +29,6 @@ public class characterMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-
         Slide();
         Jump();
         MoveToRight();
@@ -35,7 +36,27 @@ public class characterMovement : MonoBehaviour
 
     private void Slide()
     {
+        if(Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            StartCoroutine(StopSlideCoroutine());
+        }
+    }
 
+    IEnumerator StopSlideCoroutine()
+    {
+        jump = true;
+        runningCollider.enabled = false;
+        slidingCollider.enabled = true;
+        anim.SetTrigger("Slide");
+        yield return new WaitForSeconds(1);
+        anim.SetTrigger("SlideStand");
+    }
+
+    public void StandSlide()
+    {
+        jump = false;
+        slidingCollider.enabled = false;
+        runningCollider.enabled = true;
     }
 
     private void MoveToRight()
@@ -65,7 +86,7 @@ public class characterMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "ground")
+        if (other.gameObject.name == "ground" && runningCollider.enabled)
         {
             anim.SetTrigger("Run");
             Debug.Log("Entro");
