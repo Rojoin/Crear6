@@ -12,7 +12,7 @@ public class characterMovement : MonoBehaviour
     [SerializeField] private Collider2D runningCollider;
     [SerializeField] private Collider2D slidingCollider;
 
-    private int life = 10;
+    [SerializeField] private int life = 10;
     private bool jump = false;
 
     private Rigidbody2D rb;
@@ -22,7 +22,7 @@ public class characterMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        // cl = GetComponent<Collider2D>();
+        //cl = GetComponent<Collider2D>();
 
     }
 

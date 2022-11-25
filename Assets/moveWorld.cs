@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class moveWorld : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Transform leverPart1;
+
+    private void Awake()
     {
-        
+        SpawnLevelPart(new Vector3(134, 9));
+        SpawnLevelPart(new Vector3(134, 9) + new Vector3(70, 0));
+        SpawnLevelPart(new Vector3(134, 9) + new Vector3(70 + 70, 0));
     }
 
-    // Update is called once per frame
+    private void SpawnLevelPart(Vector3 spawnPosition)
+    {
+        Instantiate(leverPart1, spawnPosition, Quaternion.identity);
+
+    }
     void Update()
     {
         

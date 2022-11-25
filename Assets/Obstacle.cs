@@ -21,11 +21,13 @@ public class Obstacle : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-           other.GetComponent<characterMovement>().Damage(damageDone);
+           other.gameObject.GetComponent<characterMovement>().Damage(damageDone);
+           Debug.Log("Golpeo");
+           bc.enabled = false;
         }
     }
 
